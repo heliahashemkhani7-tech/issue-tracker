@@ -23,8 +23,8 @@ export const NavBar = () => {
             key={link.href}
             className={classNames({
               "text-zinc-900": link.href === currentPath,
-              "text-zinc-500": link.href !== currentPath,
-              "hover:text-zinc-800 transition-colors": true,
+              "text-zinc-700": link.href !== currentPath,
+              "hover:text-zinc-500 transition-colors": true,
             })}
             href={link.href}
           >
