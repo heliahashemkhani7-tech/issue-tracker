@@ -38,6 +38,9 @@ importers:
       classnames:
         specifier: 2.3.2
         version: 2.3.2
+      delay:
+        specifier: ^7.0.0
+        version: 7.0.0
       easymde:
         specifier: ^2.21.0
         version: 2.21.0
@@ -65,6 +68,9 @@ importers:
       react-icons:
         specifier: 4.11.0
         version: 4.11.0(react@19.3.1)
+      react-loading-skeleton:
+        specifier: ^3.5.0
+        version: 3.5.0(react@19.3.1)
       react-simplemde-editor:
         specifier: ^5.2.0
         version: 5.2.0(easymde@2.21.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -2135,6 +2141,10 @@ packages:
   delaunator@5.1.0:
     resolution: {integrity: sha512-AGrQ4QSgssa1NGmWmLPqN5NY2KajF5MqxetNEO+o0n3ZwZZeTmt7bBnvzHWrmkZFxGgr4HdyFgelzgi06otLuQ==}
 
+  delay@7.0.0:
+    resolution: {integrity: sha512-C3vaGs818qzZjCvVJ98GQUMVyWeg7dr5w2Nwwb2t5K8G98jOyyVO2ti2bKYk5yoYElqH3F2yA53ykuEnwD6MCg==}
+    engines: {node: '>=20'}
+
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
@@ -3100,6 +3110,10 @@ packages:
       '@types/react-dom':
         optional: true
 
+  random-int@3.1.0:
+    resolution: {integrity: sha512-h8CRz8cpvzj0hC/iH/1Gapgcl2TQ6xtnCpyOI5WvWfXf/yrDx2DOU+tD9rX23j36IF11xg1KqB9W11Z18JPMdw==}
+    engines: {node: '>=12'}
+
   rc9@3.1.0:
     resolution: {integrity: sha512-ufjkNVzbRHKcCOmTahZkmVsyc3W+MSk3jY03m+a7tGHkIsdVMG9l10/3HvFbWkkKzY5VFp3pkRsIo/UYgmFL7Q==}
 
@@ -3125,6 +3139,11 @@ packages:
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  react-loading-skeleton@3.5.0:
+    resolution: {integrity: sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   react-remove-scroll-bar@2.3.8:
     resolution: {integrity: sha512-9r+yi9+mgU33AKcj6IbT9oRCO78WriSj6t/cF8DWBZJ9aOGPOTEDvdUDz1FwKim7QXWwmHqtdHnRJfhAxEG46Q==}
@@ -3425,6 +3444,10 @@ packages:
 
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
+
+  unlimited-timeout@0.1.0:
+    resolution: {integrity: sha512-D4g+mxFeQGQHzCfnvij+R35ukJ0658Zzudw7j16p4tBBbNasKkKM4SocYxqhwT5xA7a9JYWDzKkEFyMlRi5sng==}
+    engines: {node: '>=20'}
 
   unrs-resolver@1.12.2:
     resolution: {integrity: sha512-dmlRxBJJayXjqTwC+JtF1HhJmgf3ftQ3YejFcZrf4+KKtJv0qDsK1pjqaaVjG7wJ5NJ6UVP1OqRMQ71Z4C3rxQ==}
@@ -5568,6 +5591,11 @@ snapshots:
     dependencies:
       robust-predicates: 3.0.3
 
+  delay@7.0.0:
+    dependencies:
+      random-int: 3.1.0
+      unlimited-timeout: 0.1.0
+
   delayed-stream@1.0.0: {}
 
   denque@2.1.0: {}
@@ -6709,6 +6737,8 @@ snapshots:
       '@types/react': 19.3.0
       '@types/react-dom': 19.3.0(@types/react@19.3.0)
 
+  random-int@3.1.0: {}
+
   rc9@3.1.0:
     dependencies:
       defu: 6.1.7
@@ -6730,6 +6760,10 @@ snapshots:
       react: 19.3.1
 
   react-is@16.13.1: {}
+
+  react-loading-skeleton@3.5.0(react@19.3.1):
+    dependencies:
+      react: 19.3.1
 
   react-remove-scroll-bar@2.3.8(@types/react@19.3.0)(react@19.3.1):
     dependencies:
@@ -7101,6 +7135,8 @@ snapshots:
       which-boxed-primitive: 1.1.1
 
   undici-types@8.9.0: {}
+
+  unlimited-timeout@0.1.0: {}
 
   unrs-resolver@1.12.2:
     dependencies:
