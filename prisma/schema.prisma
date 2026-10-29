@@ -11,3 +11,18 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+
+model Issue {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(225)
+  description String   @db.Text
+  status      Status   @default(OPEN)
+  createdAt   DateTime @default(now())
+  updetedAt   DateTime @updatedAt
+}
+
+enum Status {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
