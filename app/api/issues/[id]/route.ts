@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import { issueSchema } from "@/app/validationSchemas";
+import { editIssueSchema, issueSchema } from "@/app/validationSchemas";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
@@ -10,6 +10,7 @@ export async function PATCH(
 
   const body = await request.json();
   const validation = issueSchema.safeParse(body);
+  const status = editIssueSchema.safeParse(body);
 
   if (!validation.success)
     return NextResponse.json(validation.error.format(), { status: 400 });
@@ -26,6 +27,7 @@ export async function PATCH(
     data: {
       title: validation.data.title,
       description: validation.data.description,
+      status: status.data?.status,
     },
   });
 
