@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import { FaBug } from "react-icons/fa";
 import classNames from "classnames";
 import { useSession } from "next-auth/react";
+import { Skeleton } from "@/app/components";
+
 import {
   Avatar,
   Box,
@@ -59,7 +61,7 @@ const NavLinks = () => {
 
 const AuthStatus = () => {
   const { status, data: seesion } = useSession();
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
 
   if (status === "unauthenticated")
     return (
