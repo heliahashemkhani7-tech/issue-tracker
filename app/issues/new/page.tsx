@@ -12,7 +12,6 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { z } from "zod";
 import Spinner from "@/app/components/Spinner";
 
-
 type IssueForm = z.infer<typeof createIssueSchema>;
 
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
