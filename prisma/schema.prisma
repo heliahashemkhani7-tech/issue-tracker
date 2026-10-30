@@ -13,12 +13,14 @@ datasource db {
 }
 
 model Issue {
-  id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(225)
-  description String   @db.Text
-  status      Status   @default(OPEN)
-  createdAt   DateTime @default(now())
-  updetedAt   DateTime @updatedAt
+  id               Int      @id @default(autoincrement())
+  title            String   @db.VarChar(225)
+  description      String   @db.Text
+  status           Status   @default(OPEN)
+  createdAt        DateTime @default(now())
+  updetedAt        DateTime @updatedAt
+  assignedToUserID String?  @db.VarChar(225)
+  assignedToUser   User?    @relation(fields: [assignedToUserID], references: [id])
 }
 
 enum Status {
@@ -34,8 +36,9 @@ model User {
   emailVerified DateTime?
   image         String?
 
-  accounts Account[]
-  sessions Session[]
+  accounts       Account[]
+  sessions       Session[]
+  assignedIssues Issue[]
 }
 
 model Account {
