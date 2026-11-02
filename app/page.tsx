@@ -1,7 +1,17 @@
-import Image from 'next/image'
+import Pagination from "./components/Pagination";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const params = await searchParams;
+
   return (
-<div>Hello</div>
-  )
+    <Pagination
+      itemCount={100}
+      pageSize={2}
+      currentPage={Number(params.page) || 1}
+    />
+  );
 }
