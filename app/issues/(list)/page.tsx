@@ -6,9 +6,12 @@ import IssueActions from "./IssueActions";
 import { Status } from "@/app/generated/prisma/enums";
 import { Issue } from "@/app/generated/prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
-
 interface Props {
-  searchParams: Promise<{ status: Status; orderBy: keyof Issue }>;
+  searchParams: Promise<{
+    status: Status;
+    orderBy: keyof Issue;
+    sortOrder?: "asc" | "desc";
+  }>;
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
@@ -35,8 +38,16 @@ const IssuesPage = async ({ searchParams }: Props) => {
 
   const status = statuses.includes(params.status) ? params.status : undefined;
 
+  const orderBy = columns.map((column) => column.value).includes(params.orderBy)
+    ? params.orderBy
+    : "createdAt";
+  const sortOrder = params.sortOrder === "asc" ? "asc" : "desc";
+
   const issues = await prisma.issue.findMany({
     where: { status },
+    orderBy: {
+      [orderBy]: sortOrder,
+    },
   });
 
   return (
@@ -48,7 +59,16 @@ const IssuesPage = async ({ searchParams }: Props) => {
             {columns.map((column) => (
               <Table.ColumnHeaderCell key={column.value}>
                 <NextLink
-                  href={{ query: { ...params, orderBy: column.value } }}
+                  href={{
+                    query: {
+                      ...params,
+                      orderBy: column.value,
+                      sortOrder:
+                        orderBy === column.value && sortOrder === "asc"
+                          ? "desc"
+                          : "asc",
+                    },
+                  }}
                 >
                   {column.value}
                 </NextLink>
