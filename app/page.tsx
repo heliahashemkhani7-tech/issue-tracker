@@ -12,6 +12,7 @@ export default async function Home() {
     where: { status: "IN_PROGRESS" },
   });
   const closed = await prisma.issue.count({ where: { status: "CLOSED" } });
+  console.log({ open, inProgress, closed });
   return (
     <Grid columns={{ initial: "1", md: "2" }} gap="5">
       <Flex direction="column" gap="5">
