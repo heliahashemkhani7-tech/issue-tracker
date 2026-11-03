@@ -1,13 +1,9 @@
 import { PrismaClient } from "@/app/generated/prisma/client";
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const prismaClientSingleton = () => {
-  const adapter = new PrismaMariaDb({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: process.env.DB_PASSWORD!,
-    database: "issue-tracker",
+  const adapter = new PrismaPg({
+    connectionString: process.env.PRISMA_POSTGRES_DATABASE_URL_POOLED!,
   });
 
   return new PrismaClient({ adapter });
